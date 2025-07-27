@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: addictiontube-unified4
+    runtime: python
+    runtimeVersion: 3.10
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 --timeout 300 -b 0.0.0.0:$PORT app:app
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: MILVUS_URI
+        value: https://in03-ace8ae4aaa74fa7.serverless.aws-eu-central-1.cloud.zilliz.com
+        sync: false
+      - key: MILVUS_TOKEN
+        sync: false
+      - key: FLASK_ENV
+        value: production
+      - key: PORT
+        value: 5000  # Optional, Render overrides with dynamic port
