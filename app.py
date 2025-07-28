@@ -16,6 +16,7 @@ from dotenv import load_dotenv
 import nltk
 from tenacity import retry, stop_after_attempt, wait_exponential
 
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["https://addictiontube.com", "http://addictiontube.com"]}})
 
